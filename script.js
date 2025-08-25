@@ -1453,6 +1453,11 @@ function restoreItemData(itemElement, itemData) {
         if (itemData[input.name] !== undefined) {
             input.value = itemData[input.name] || '';
             console.log(`✅ ${input.name} 복원 완료:`, itemData[input.name]);
+            
+            // 포트폴리오 타입이 변경된 경우 팀 필드 토글
+            if (input.name === 'portfolioType') {
+                togglePortfolioTeamFields(input);
+            }
         }
     });
     
@@ -1982,6 +1987,18 @@ document.getElementById('resumePreview').addEventListener('click', function(even
     }
 });
 
+// 포트폴리오 팀 필드 토글 함수
+function togglePortfolioTeamFields(selectElement) {
+    const portfolioItem = selectElement.closest('.portfolio-item');
+    const teamFields = portfolioItem.querySelector('.portfolio-team-fields');
+    
+    if (selectElement.value === '단체') {
+        teamFields.style.display = 'flex';
+    } else {
+        teamFields.style.display = 'none';
+    }
+}
+
 // 포트폴리오 추가 (최적화)
 function addPortfolio() {
     const container = document.getElementById('portfolioContainer');
@@ -1993,6 +2010,25 @@ function addPortfolio() {
                 <label>포트폴리오 제목</label>
                 <input type="text" name="portfolioTitle" placeholder="예: 개인 포트폴리오, 프로젝트명">
             </div>
+            <div class="form-group">
+                <label>작업 유형</label>
+                <select name="portfolioType" onchange="togglePortfolioTeamFields(this)">
+                    <option value="개인">개인</option>
+                    <option value="단체">단체</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row portfolio-team-fields" style="display: none;">
+            <div class="form-group">
+                <label>작업 기간</label>
+                <input type="text" name="portfolioPeriod" placeholder="예: 2023.01 ~ 2023.06">
+            </div>
+            <div class="form-group">
+                <label>참여 인원</label>
+                <input type="number" name="portfolioMembers" placeholder="예: 4" min="2" max="20">
+            </div>
+        </div>
+        <div class="form-row">
             <div class="form-group">
                 <label>링크</label>
                 <input type="url" name="portfolioUrl" placeholder="https://example.com">
@@ -2667,6 +2703,9 @@ function generateResumeHTML(data) {
                             <div class="item-header">
                                 <div class="content">
                                     <h4>${portfolio.portfolioTitle}</h4>
+                                    ${portfolio.portfolioType ? `<div class="portfolio-type">${portfolio.portfolioType}</div>` : ''}
+                                    ${portfolio.portfolioType === '단체' && portfolio.portfolioPeriod ? `<div class="portfolio-period">${portfolio.portfolioPeriod}</div>` : ''}
+                                    ${portfolio.portfolioType === '단체' && portfolio.portfolioMembers ? `<div class="portfolio-members">참여 인원: ${portfolio.portfolioMembers}명</div>` : ''}
                                     ${portfolio.portfolioUrl ? `<div class="portfolio-url"><a href="${portfolio.portfolioUrl}" target="_blank">${portfolio.portfolioUrl}</a></div>` : ''}
                                     ${portfolio.portfolioDescription ? `<div class="portfolio-description">${portfolio.portfolioDescription}</div>` : ''}
                                 </div>
