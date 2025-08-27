@@ -655,8 +655,7 @@ header p {
     color: #495057;
 }
 
-/* 프로젝트와 포트폴리오 textarea 특별 스타일 (기존 호환성 유지) */
-textarea[name="projectDescription"],
+/* 포트폴리오 textarea 특별 스타일 */
 textarea[name="portfolioDescription"] {
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border: 2px solid #e9ecef;
@@ -672,7 +671,6 @@ textarea[name="portfolioDescription"] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-textarea[name="projectDescription"]:focus,
 textarea[name="portfolioDescription"]:focus {
     border-color: var(--accent-color);
     box-shadow: 0 0 0 4px rgba(129, 212, 250, 0.08), 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -680,14 +678,12 @@ textarea[name="portfolioDescription"]:focus {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
 }
 
-textarea[name="projectDescription"]:hover,
 textarea[name="portfolioDescription"]:hover {
     border-color: var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-1px);
 }
 
-textarea[name="projectDescription"]::placeholder,
 textarea[name="portfolioDescription"]::placeholder {
     color: #6c757d;
     font-weight: 400;
@@ -695,8 +691,7 @@ textarea[name="portfolioDescription"]::placeholder {
     opacity: 0.8;
 }
 
-/* 프로젝트와 포트폴리오 컨테이너 스타일 개선 */
-.project-item,
+/* 포트폴리오 컨테이너 스타일 개선 */
 .portfolio-item {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border: 1px solid #e9ecef;
@@ -707,15 +702,13 @@ textarea[name="portfolioDescription"]::placeholder {
     transition: all 0.3s ease;
 }
 
-.project-item:hover,
 .portfolio-item:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
     border-color: var(--primary-color);
 }
 
-/* 프로젝트와 포트폴리오 제목 스타일 */
-.project-item h4,
+/* 포트폴리오 제목 스타일 */
 .portfolio-item h4 {
     color: var(--accent-color);
     font-weight: 600;
@@ -723,8 +716,7 @@ textarea[name="portfolioDescription"]::placeholder {
     font-size: 16px;
 }
 
-/* 프로젝트와 포트폴리오 라벨 스타일 */
-.project-item label,
+/* 포트폴리오 라벨 스타일 */
 .portfolio-item label {
     font-weight: 500;
     color: #495057;
@@ -733,8 +725,7 @@ textarea[name="portfolioDescription"]::placeholder {
     display: block;
 }
 
-/* 프로젝트와 포트폴리오 입력 필드 스타일 */
-.project-item input,
+/* 포트폴리오 입력 필드 스타일 */
 .portfolio-item input {
     border: 2px solid #e9ecef;
     border-radius: 8px;
@@ -742,7 +733,6 @@ textarea[name="portfolioDescription"]::placeholder {
     transition: all 0.3s ease;
 }
 
-.project-item input:focus,
 .portfolio-item input:focus {
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(129, 212, 250, 0.1);
@@ -1201,7 +1191,7 @@ textarea[name="portfolioDescription"]::placeholder {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 45px;
     max-width: 100%;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -1692,6 +1682,26 @@ textarea[name="portfolioDescription"]::placeholder {
     margin-bottom: 0;
 }
 
+/* 프로젝트 카테고리 스타일 */
+.project-category {
+    margin-bottom: 30px;
+}
+
+.project-category h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ecf0f1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-category:last-child {
+    margin-bottom: 0;
+}
+
 /* 포트폴리오 아이템 스타일 */
 .portfolio-item-resume {
     margin-bottom: 20px;
@@ -1702,6 +1712,22 @@ textarea[name="portfolioDescription"]::placeholder {
     transition: none;
     border: none;
     border-bottom: 1px solid #ecf0f1;
+}
+
+/* 팀 프로젝트 스타일 */
+.portfolio-item-resume.team-project {
+    border-left: 4px solid #3498db;
+    padding-left: 15px;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(52, 152, 219, 0.02) 100%);
+    border-radius: 0 8px 8px 0;
+}
+
+/* 개인 프로젝트 스타일 */
+.portfolio-item-resume.personal-project {
+    border-left: 4px solid #e74c3c;
+    padding-left: 15px;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0.02) 100%);
+    border-radius: 0 8px 8px 0;
 }
 
 .portfolio-item-resume .item-header {
@@ -1738,6 +1764,22 @@ textarea[name="portfolioDescription"]::placeholder {
 .portfolio-url a:hover {
     text-decoration: underline;
     color: #2980b9;
+}
+
+.portfolio-period,
+.portfolio-members {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.portfolio-period {
+    color: #e67e22;
+}
+
+.portfolio-members {
+    color: #27ae60;
 }
 
 .portfolio-description {
@@ -1920,10 +1962,13 @@ textarea[name="portfolioDescription"]::placeholder {
     color: black;
 }
 
-.resume-summary p {
-    margin: 0 0 8px 0;
-    line-height: 1.6;
-    font-size: 15px; /* 14px에서 15px로 1pt 증가 */
+.resume-summary p,
+.resume-content .resume-summary p,
+.resume-summary,
+.resume-content .resume-summary {
+    margin: 0 0 12px 0;
+    line-height: 1.8;
+    font-size: 14px;
     color: #333;
     text-align: left;
     padding-left: 0;
@@ -2162,8 +2207,8 @@ textarea[name="portfolioDescription"]::placeholder {
 }
 
 .resume-left-column .resume-section p {
-    margin-bottom: 8px;
-    line-height: 1.6;
+    margin-bottom: 12px;
+    line-height: 2;
     font-size: 14px;
     color: #333333; /* 더 명확한 검정색 */
     font-weight: 400;
@@ -2245,94 +2290,94 @@ textarea[name="portfolioDescription"]::placeholder {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .theme-btn {
         min-width: 200px;
     }
-    
+
     .form-row {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .photo-group {
         flex: none;
         align-self: center;
     }
-    
+
     .resume-content {
         width: 100%;
         height: auto;
         padding: 15mm;
     }
-    
+
     .resume-header {
         flex-direction: column;
         text-align: center;
         gap: 15px;
     }
-    
+
     .resume-photo {
         align-self: center;
     }
-    
+
     .contact-info {
         flex-direction: column;
         gap: 10px;
         text-align: center;
     }
-    
+
     .contact-info .contact-details {
         justify-content: center;
         flex-wrap: wrap;
         gap: 15px;
     }
-    
+
     .resume-body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .education-item-resume,
     .experience-item-resume,
     .certificate-item-resume {
         padding: 10px;
     }
-    
+
     .education-item-resume .item-header,
     .experience-item-resume .item-header,
     .certificate-item-resume .item-header {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .education-item-resume .year,
     .experience-item-resume .year,
     .certificate-item-resume .year {
         text-align: left;
         min-width: auto;
     }
-    
+
     .education-item-resume .content,
     .experience-item-resume .content,
     .certificate-item-resume .content {
         margin-left: 0;
     }
-    
+
     .skill-item {
         flex-direction: column;
         gap: 5px;
         align-items: flex-start;
     }
-    
+
     .skill-bar {
         width: 100%;
     }
-    
+
     .button-group {
         flex-direction: column;
     }
-    
+
     .preview-btn,
     .download-btn {
         width: 100%;
@@ -2344,12 +2389,12 @@ textarea[name="portfolioDescription"]::placeholder {
         max-width: none;
         padding: 0;
     }
-    
+
     .form-container,
     .resume-preview {
         display: none;
     }
-    
+
     .resume-content {
         box-shadow: none;
         width: 210mm;
@@ -2434,47 +2479,47 @@ textarea[name="portfolioDescription"]::placeholder {
         right: 20px;
         gap: 12px;
     }
-    
+
     .floating-btn {
         min-width: 130px;
         padding: 12px 16px;
         font-size: 13px;
     }
-    
+
     .btn-icon {
         font-size: 16px;
     }
-    
+
     .resume-preview {
         padding: 15px;
     }
-    
+
     .preview-header {
         padding: 15px 20px;
         margin: -15px -15px 15px -15px;
     }
-    
+
     .preview-header h2 {
         font-size: 1.6rem;
     }
-    
+
     .close-btn {
         width: 35px;
         height: 35px;
         font-size: 16px;
     }
-    
+
     .resume-content {
         width: 100%;
         min-height: auto;
         border-radius: 8px;
     }
-    
+
     .resume-body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .resume-header {
         flex-direction: column;
         text-align: center;
@@ -2482,40 +2527,40 @@ textarea[name="portfolioDescription"]::placeholder {
         padding: 20px;
         border-radius: 8px 8px 0 0;
     }
-    
+
     .resume-photo {
         align-self: center;
         flex: 0 0 120px;
         height: 150px;
     }
-    
+
     .resume-info-right h1 {
         font-size: 2rem;
     }
-    
+
     .resume-info-right .job-title {
         font-size: 1.1rem;
     }
-    
+
     .department-bar {
         grid-column: 1 / -1;
         padding: 12px 20px;
         font-size: 0.9rem;
     }
-    
+
     .resume-left-column {
         grid-column: 1 / -1;
         padding: 20px;
         gap: 25px;
         border-radius: 8px;
     }
-    
+
     .resume-right-column {
         grid-column: 1 / -1;
         padding: 20px;
         gap: 25px;
     }
-    
+
     .contact-info {
         flex-direction: row;
         gap: 15px;
@@ -2523,27 +2568,27 @@ textarea[name="portfolioDescription"]::placeholder {
         justify-content: center;
         flex-wrap: wrap;
     }
-    
+
     .contact-info .contact-details {
         justify-content: center;
         flex-wrap: wrap;
         gap: 15px;
     }
-    
+
     .education-item-resume,
     .experience-item-resume,
     .certificate-item-resume,
     .introduction-item-resume {
         padding: 15px;
     }
-    
+
     .education-item-resume .item-header,
     .experience-item-resume .item-header,
     .certificate-item-resume .item-header {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .education-item-resume .year,
     .experience-item-resume .year,
     .certificate-item-resume .year {
@@ -2551,23 +2596,23 @@ textarea[name="portfolioDescription"]::placeholder {
         min-width: auto;
         width: 100%;
     }
-    
+
     .education-item-resume .content,
     .experience-item-resume .content,
     .certificate-item-resume .content {
         margin-left: 0;
     }
-    
+
     .skill-item {
         flex-direction: column;
         gap: 8px;
         align-items: flex-start;
     }
-    
+
     .skill-bar {
         width: 100%;
     }
-    
+
     .toast-notification {
         top: 15px;
         right: 15px;
@@ -2575,7 +2620,7 @@ textarea[name="portfolioDescription"]::placeholder {
         max-width: none;
         transform: translateY(-100px);
     }
-    
+
     .toast-notification.show {
         transform: translateY(0);
     }

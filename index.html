@@ -16,7 +16,7 @@
             👤 기본정보
         </button>
         <button type="button" class="floating-btn" onclick="scrollToSection('portfolio')">
-            🎨 포트폴리오
+            🎨 프로젝트
         </button>
         <button type="button" class="floating-btn" onclick="scrollToSection('education')">
             🎓 학력사항
@@ -27,9 +27,6 @@
         <button type="button" class="floating-btn" onclick="scrollToSection('highlights')">
             ⭐ 하이라이트
         </button>
-        <button type="button" class="floating-btn" onclick="scrollToSection('career-summary')">
-            📋 경력요약
-        </button>
         <button type="button" class="floating-btn" onclick="scrollToSection('skills')">
             🛠️ 기술스택
         </button>
@@ -39,9 +36,6 @@
         <button type="button" class="floating-btn" onclick="scrollToSection('key-projects')">
             🔑 키프로젝트
         </button>
-        <button type="button" class="floating-btn" onclick="scrollToSection('projects')">
-            🚀 프로젝트경험
-        </button>
         <button type="button" class="floating-btn" onclick="scrollToSection('training')">
             📚 교육연수
         </button>
@@ -49,12 +43,12 @@
             📌 기타사항
         </button>
     </div>
-    
+
     <div class="container">
         <header>
             <h1>이력서 작성기</h1>
             <p>A4 크기 기준으로 이력서를 작성하고 PDF로 다운로드하세요</p>
-            
+
             <!-- 테마 선택 버튼들 -->
             <div class="theme-selector">
                 <h3>테마 선택</h3>
@@ -178,7 +172,7 @@
                 </div>
 
                 <div class="form-section" id="portfolio">
-                    <h2>포트폴리오</h2>
+                    <h2>프로젝트</h2>
                     <div id="portfolioContainer">
                         <div class="portfolio-item">
                             <div class="form-row">
@@ -186,6 +180,25 @@
                                     <label>포트폴리오 제목</label>
                                     <input type="text" name="portfolioTitle" placeholder="예: 개인 포트폴리오, 프로젝트명">
                                 </div>
+                                <div class="form-group">
+                                    <label>작업 유형</label>
+                                    <select name="portfolioType" onchange="togglePortfolioTeamFields(this)">
+                                        <option value="개인">개인</option>
+                                        <option value="단체">단체</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row portfolio-team-fields" style="display: none;">
+                                <div class="form-group">
+                                    <label>작업 기간</label>
+                                    <input type="text" name="portfolioPeriod" placeholder="예: 2023.03 ~ 2023.06">
+                                </div>
+                                <div class="form-group">
+                                    <label>참여 인원</label>
+                                    <input type="number" name="portfolioMembers" placeholder="예: 4" min="2">
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group">
                                     <label>링크</label>
                                     <input type="url" name="portfolioUrl" placeholder="https://example.com">
@@ -199,7 +212,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="add-btn" onclick="addPortfolio()">+ 포트폴리오 추가</button>
+                    <button type="button" class="add-btn" onclick="addPortfolio()">+ 프로젝트 추가</button>
                 </div>
 
                 <div class="form-section" id="education">
@@ -297,7 +310,7 @@
                     <div class="form-group">
                         <label for="resumeSummary">전체 이력서 요약 (5줄 이내)</label>
                         <div class="rich-editor-container">
-                            <div class="rich-editor" id="resumeSummary" contenteditable="true" data-placeholder="예: 
+                            <div class="rich-editor" id="resumeSummary" contenteditable="true" data-placeholder="예:
 • 3년간의 웹 개발 경험으로 React, Node.js 기반 풀스택 개발 역량 보유
 • AI/ML 프로젝트 2건 참여로 Python, TensorFlow 활용 능력 확보
 • 대규모 사용자 서비스 운영 경험으로 시스템 안정성 및 성능 최적화 역량 보유
@@ -307,15 +320,7 @@
                     </div>
                 </div>
 
-                <div class="form-section" id="career-summary">
-                    <h2>경력 요약 (Career Summary)</h2>
-                    <div class="form-group">
-                        <label for="careerSummary">경력 요약 (3-5줄)</label>
-                        <div class="rich-editor-container">
-                            <div class="rich-editor" id="careerSummary" contenteditable="true" data-placeholder="예: 제조·고객사 프로젝트 경험을 바탕으로 AI 기반 서비스 개발에 도전, PM·개발 모두 경험한 풀스택 개발자입니다. React, Node.js 기반 웹 서비스 개발과 Python을 활용한 AI/ML 프로젝트를 수행하며, 대규모 사용자 서비스 운영 경험을 보유하고 있습니다. 팀 리더 경험을 통해 협업 및 커뮤니케이션 능력을 갖추고, 지속적인 학습을 통해 최신 기술 트렌드를 파악하고 적용하는 능력을 보유하고 있습니다."></div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="form-section" id="skills">
                     <h2>기술스택</h2>
@@ -329,7 +334,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-category-input">
                             <h3>Backend</h3>
                             <div class="form-group">
@@ -339,7 +344,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-category-input">
                             <h3>Database</h3>
                             <div class="form-group">
@@ -349,7 +354,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-category-input">
                             <h3>AI/ML</h3>
                             <div class="form-group">
@@ -359,7 +364,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="skill-category-input">
                             <h3>Tools & Others</h3>
                             <div class="form-group">
@@ -404,48 +409,7 @@
                     </div>
                 </div>
 
-                <div class="form-section" id="projects">
-                    <h2>프로젝트 경험</h2>
-                    <div id="projectContainer">
-                        <div class="project-item">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>프로젝트명</label>
-                                    <input type="text" name="projectName" placeholder="예: 쇼핑몰 웹사이트 개발">
-                                </div>
-                                <div class="form-group">
-                                    <label>역할</label>
-                                    <input type="text" name="projectRole" placeholder="예: 팀장, 개발자, 디자이너">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>시작일</label>
-                                    <input type="date" name="projectStartDate">
-                                </div>
-                                <div class="form-group">
-                                    <label>완료일</label>
-                                    <input type="date" name="projectEndDate">
-                                </div>
-                                <div class="form-group">
-                                    <label>진행상태</label>
-                                    <select name="projectStatus">
-                                        <option value="완료">완료</option>
-                                        <option value="진행중">진행중</option>
-                                        <option value="계획중">계획중</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>프로젝트 설명</label>
-                                <div class="rich-editor-container">
-                                    <div class="rich-editor" name="projectDescription" contenteditable="true" data-placeholder="프로젝트의 목적, 사용 기술, 주요 성과 등을 입력하세요"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="add-btn" onclick="addProject()">+ 프로젝트 추가</button>
-                </div>
+
 
                 <div class="form-section" id="additional">
                     <h2>기타사항</h2>

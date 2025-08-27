@@ -1,0 +1,293 @@
+{
+  // Python 관련 설정
+  "python.defaultInterpreterPath": "./venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "88"],
+  "python.sortImports.args": ["--profile", "black"],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.extraPaths": [
+    "./backend",
+    "./frontend/src"
+  ],
+
+  // 파일 확장자별 설정
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.rulers": [88],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // 파일 탐색기 설정
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.pytest_cache": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.env": false,
+    "**/.env.local": false,
+    "**/.env.*.local": false
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/__pycache__/**": true,
+    "**/.git/**": true,
+    "**/venv/**": true
+  },
+
+  // 검색 설정
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/__pycache__": true,
+    "**/venv": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  // 에디터 설정
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "off",
+  "editor.parameterHints.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // 터미널 설정
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "args": ["-NoExit", "-Command", "cd '${workspaceFolder}'"]
+    }
+  },
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}/backend"
+  },
+
+  // 디버깅 설정
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": [
+    "backend"
+  ],
+
+  // 확장 프로그램 권장 설정
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoUpdate": true,
+
+  // 언어별 설정
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+
+  // Git 설정
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.ignoreLimitWarning": true,
+
+  // 작업 영역 설정
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+
+  // 알림 설정
+  "notifications.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
+
+  // 파일 인코딩 설정
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // 자동 저장 설정
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+
+  // IntelliSense 설정
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.include": [
+    "**/*.py"
+  ],
+  "python.analysis.exclude": [
+    "**/node_modules",
+    "**/venv",
+    "**/__pycache__"
+  ],
+
+  // MongoDB 관련 설정
+  "mongo.shell": "mongosh",
+  "mongo.defaultConnectionSaving": "workspace",
+  "mongo.connections": [
+    {
+      "name": "Local MongoDB",
+      "connectionString": "mongodb://localhost:27017",
+      "database": "hireme"
+    }
+  ],
+
+  // FastAPI 관련 설정
+  "python.linting.mypyEnabled": false,
+  "python.linting.banditEnabled": true,
+  "python.linting.banditArgs": [
+    "--configfile",
+    ".bandit"
+  ],
+
+  // 프론트엔드 관련 설정
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true,
+
+  // 디버깅 및 실행 설정
+  "python.terminal.executeInFileDir": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+
+  // 코드 스니펫 설정
+  "editor.snippetSuggestions": "top",
+
+  // 문제 패널 설정
+  "problems.decorations.enabled": true,
+
+  // 탐색기 설정
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // 검색 및 바꾸기 설정
+  "search.useGlobalIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+
+  // 파일 연결 설정
+  "files.associations": {
+    "*.py": "python",
+    "*.js": "javascript",
+    "*.jsx": "javascriptreact",
+    "*.ts": "typescript",
+    "*.tsx": "typescriptreact",
+    "*.json": "json",
+    "*.md": "markdown",
+    "*.yml": "yaml",
+    "*.yaml": "yaml",
+    "*.env": "dotenv",
+    "*.env.*": "dotenv"
+  },
+
+  // 언어별 특정 설정
+  "yaml.format.enable": true,
+  "yaml.validate": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.{yml,yaml}"
+  },
+
+  // 커서 설정
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorWidth": 2,
+
+  // 선택 설정
+  "editor.multiCursorModifier": "alt",
+  "editor.selectionHighlight": true,
+
+  // 스크롤 설정
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+
+  // 성능 최적화
+  "files.maxMemoryForLargeFilesMB": 4096,
+  "search.maxResults": 20000,
+  "editor.maxTokenizationLineLength": 20000
+
+  // 커서 관련 설정 추가
+  "cursor.llm.provider": "openai",
+  "cursor.llm.apiBase": "http://localhost:11434/v1",
+  "cursor.llm.apiKey": "dummy-key",
+  "cursor.llm.model": "gpt-oss:20b",
+
+  "cursor.fineTuning.progressDisplay": "모든 파인튜닝 작업에 대해 진행 과정을 실시간으로 보여줄 것",
+  "cursor.fineTuning.timeoutRule": "10초 이상 대기하면 강제 종료 후 다른 방법으로 진행",
+  "cursor.fineTuning.errorHandling": "에러 발생 시 즉시 다른 접근 시도, 중단 없이 진행",
+  "cursor.fineTuning.comprehensiveTesting": "모든 경우의 수를 고려한 완전한 테스트",
+  "cursor.fineTuning.currentPerformance.successRate": "92.9%",
+  "cursor.fineTuning.currentPerformance.responseTime": "0.000초",
+  "cursor.fineTuning.currentPerformance.grade": "GREAT",
+
+  "cursor.globalExecution.timeoutRule": "모든 코드 실행에서 10초 이상 대기하면 강제 종료 후 다음 단계 진행",
+  "cursor.globalExecution.noWaiting": true,
+  "cursor.globalExecution.continuousExecution": true,
+
+  "cursor.checklist.pickChatbotAutonomy.question": "픽톡은 완전자율에이전트인가요?",
+  "cursor.checklist.pickChatbotAutonomy.autoCheck": true,
+  "cursor.checklist.pickChatbotAutonomy.checkInterval": "on_cursor_start",
+  "cursor.checklist.pickChatbotAutonomy.verificationMethods": [
+    "import_dependency_check",
+    "external_module_scan",
+    "self_contained_validation",
+    "autonomy_test"
+  ],
+  "cursor.checklist.pickChatbotAutonomy.status": "pending",
+  "cursor.checklist.pickChatbotAutonomy.notes": "커서 실행할 때마다 자동으로 픽톡의 자율성을 검증합니다",
+
+  "cursor.autonomyMonitoring.enabled": true,
+  "cursor.autonomyMonitoring.checkOnStartup": true,
+  "cursor.autonomyMonitoring.checkOnCursorLaunch": true,
+  "cursor.autonomyMonitoring.checkOnCodeChange": true,
+  "cursor.autonomyMonitoring.checkOnSessionStart": true,
+  "cursor.autonomyMonitoring.alertOnDependencyDetected": true,
+  "cursor.autonomyMonitoring.logAutonomyStatus": true,
+  "cursor.autonomyMonitoring.cursorLaunchTriggers": [
+    "cursor_startup",
+    "new_window",
+    "workspace_open"
+  ]
+}
