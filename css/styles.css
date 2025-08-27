@@ -4,6 +4,7 @@
     --primary-color: #fafcff; /* 더욱 밝은 색상 */
     --secondary-color: #f5fbff; /* 더욱 밝은 색상 */
     --accent-color: #81d4fa;
+    --accent-color-rgb: 129, 212, 250;
     --text-color: #0277bd;
     --border-color: #4fc3f7;
     --skill-bg: #f3f9ff;
@@ -17,6 +18,7 @@
     --primary-color: #fafcff; /* 더욱 밝은 색상 */
     --secondary-color: #f5fbff; /* 더욱 밝은 색상 */
     --accent-color: #81d4fa;
+    --accent-color-rgb: 129, 212, 250;
     --text-color: #0277bd;
     --border-color: #4fc3f7;
     --skill-bg: #f3f9ff;
@@ -29,6 +31,7 @@
     --primary-color: #e8f5e8;
     --secondary-color: #c8e6c9;
     --accent-color: #a5d6a7;
+    --accent-color-rgb: 165, 214, 167;
     --text-color: #2e7d32;
     --border-color: #66bb6a;
     --skill-bg: #f1f8e9;
@@ -41,6 +44,7 @@
     --primary-color: #f3e5f5;
     --secondary-color: #e1bee7;
     --accent-color: #ce93d8;
+    --accent-color-rgb: 206, 147, 216;
     --text-color: #7b1fa2;
     --border-color: #ba68c8;
     --skill-bg: #faf5ff;
@@ -53,6 +57,7 @@
     --primary-color: #fff3e0;
     --secondary-color: #ffe0b2;
     --accent-color: #ffcc80;
+    --accent-color-rgb: 255, 204, 128;
     --text-color: #ef6c00;
     --border-color: #ffb74d;
     --skill-bg: #fff8e1;
@@ -65,6 +70,7 @@
     --primary-color: #ffebee;
     --secondary-color: #ffcdd2;
     --accent-color: #ef9a9a;
+    --accent-color-rgb: 239, 154, 154;
     --text-color: #c62828;
     --border-color: #e57373;
     --skill-bg: #fff5f5;
@@ -77,6 +83,7 @@
     --primary-color: #f5f5f5;
     --secondary-color: #eeeeee;
     --accent-color: #e0e0e0;
+    --accent-color-rgb: 224, 224, 224;
     --text-color: #616161;
     --border-color: #bdbdbd;
     --skill-bg: #fafafa;
@@ -89,12 +96,35 @@
     --primary-color: #1a1a1a;
     --secondary-color: #2d2d2d;
     --accent-color: #404040;
+    --accent-color-rgb: 64, 64, 64;
     --text-color: #ffffff;
     --border-color: #666666;
     --skill-bg: #2a2a2a;
     --skill-border: #404040;
     --skill-hover: #333333;
     --left-text-color: #ffffff;
+}
+
+/* 다크 테마에서 포트폴리오 텍스트 가독성 향상 */
+[data-theme="black"] .portfolio-description p {
+    color: #e0e0e0;
+}
+
+[data-theme="black"] .portfolio-description p strong {
+    color: #ffffff;
+}
+
+[data-theme="black"] .portfolio-period,
+[data-theme="black"] .portfolio-members {
+    color: #cccccc;
+}
+
+[data-theme="black"] .portfolio-url a {
+    color: #4fc3f7;
+}
+
+[data-theme="black"] .portfolio-url a:hover {
+    color: #81d4fa;
 }
 
 
@@ -1666,6 +1696,13 @@ textarea[name="portfolioDescription"]::placeholder {
     letter-spacing: 0.2px;
 }
 
+.training-institution {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #666666;
+    font-weight: 500;
+}
+
 .training-description {
     margin-top: 10px;
 }
@@ -1690,10 +1727,10 @@ textarea[name="portfolioDescription"]::placeholder {
 .project-category h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #ecf0f1;
+    border-bottom: 2px solid var(--border-color);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -1711,23 +1748,24 @@ textarea[name="portfolioDescription"]::placeholder {
     box-shadow: none;
     transition: none;
     border: none;
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* 팀 프로젝트 스타일 */
 .portfolio-item-resume.team-project {
-    border-left: 4px solid #3498db;
+    border-left: 4px solid var(--accent-color);
     padding-left: 15px;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(52, 152, 219, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(var(--accent-color-rgb, 129, 212, 250), 0.08) 0%, rgba(var(--accent-color-rgb, 129, 212, 250), 0.03) 100%);
     border-radius: 0 8px 8px 0;
 }
 
 /* 개인 프로젝트 스타일 */
 .portfolio-item-resume.personal-project {
-    border-left: 4px solid #e74c3c;
+    border-left: 4px solid var(--accent-color);
     padding-left: 15px;
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(var(--accent-color-rgb, 129, 212, 250), 0.04) 0%, rgba(var(--accent-color-rgb, 129, 212, 250), 0.01) 100%);
     border-radius: 0 8px 8px 0;
+    opacity: 0.9;
 }
 
 .portfolio-item-resume .item-header {
@@ -1743,7 +1781,7 @@ textarea[name="portfolioDescription"]::placeholder {
 
 .portfolio-item-resume h4 {
     font-weight: 800;
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 10px;
     font-size: 17px;
     text-shadow: none;
@@ -1755,7 +1793,7 @@ textarea[name="portfolioDescription"]::placeholder {
 }
 
 .portfolio-url a {
-    color: #3498db;
+    color: #0066cc;
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
@@ -1763,23 +1801,25 @@ textarea[name="portfolioDescription"]::placeholder {
 
 .portfolio-url a:hover {
     text-decoration: underline;
-    color: #2980b9;
+    color: #004499;
 }
 
 .portfolio-period,
 .portfolio-members {
     margin-bottom: 6px;
     font-size: 13px;
-    color: #7f8c8d;
+    color: #666666;
     font-weight: 500;
 }
 
 .portfolio-period {
     color: #e67e22;
+    font-weight: 600;
 }
 
 .portfolio-members {
-    color: #27ae60;
+    color: #666666;
+    font-weight: 600;
 }
 
 .portfolio-description {
@@ -1790,14 +1830,14 @@ textarea[name="portfolioDescription"]::placeholder {
     margin: 0 0 8px 0;
     line-height: 1.6;
     font-size: 17px; /* 16px에서 17px로 1pt 증가 */
-    color: #2c3e50;
+    color: #333333;
     font-weight: 400;
 }
 
 /* 포트폴리오 설명에서 숫자 말머리기호 타이틀 볼드체 */
 .portfolio-description p strong {
     font-weight: 800;
-    color: #2c3e50;
+    color: #333333;
     font-size: 15px;
     margin-right: 4px;
 }

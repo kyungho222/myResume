@@ -26,108 +26,7 @@ function changeTheme(theme) {
     showToast(`${getThemeName(theme)} 테마로 변경되었습니다!`, 'info');
 }
 
-// 랜덤 테마 생성 함수
-function changeRandomTheme() {
-    console.log('🎲 랜덤 테마 함수 실행됨');
 
-    // 랜덤 색상 생성 함수 - 더 다양한 색상 조합
-    function generateRandomColor() {
-        const hue = Math.floor(Math.random() * 360);
-        const saturation = Math.floor(Math.random() * 40) + 50; // 50-90%
-        const lightness = Math.floor(Math.random() * 25) + 65; // 65-90% (파스텔톤)
-        const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        console.log('생성된 색상:', color);
-        return color;
-    }
-
-    // 보완색 관계의 색상 생성 함수
-    function generateComplementaryColors() {
-        const baseHue = Math.floor(Math.random() * 360);
-        const saturation = Math.floor(Math.random() * 30) + 60; // 60-90%
-        const lightness1 = Math.floor(Math.random() * 20) + 70; // 70-90%
-        const lightness2 = Math.floor(Math.random() * 20) + 70; // 70-90%
-
-        return [
-            `hsl(${baseHue}, ${saturation}%, ${lightness1}%)`,
-            `hsl(${(baseHue + 180) % 360}, ${saturation}%, ${lightness2}%)`
-        ];
-    }
-
-    // 삼각형 색상 관계 생성 함수
-    function generateTriadicColors() {
-        const baseHue = Math.floor(Math.random() * 360);
-        const saturation = Math.floor(Math.random() * 30) + 60; // 60-90%
-        const lightness1 = Math.floor(Math.random() * 20) + 70; // 70-90%
-        const lightness2 = Math.floor(Math.random() * 20) + 70; // 70-90%
-        const lightness3 = Math.floor(Math.random() * 20) + 70; // 70-90%
-
-        return [
-            `hsl(${baseHue}, ${saturation}%, ${lightness1}%)`,
-            `hsl(${(baseHue + 120) % 360}, ${saturation}%, ${lightness2}%)`,
-            `hsl(${(baseHue + 240) % 360}, ${saturation}%, ${lightness3}%)`
-        ];
-    }
-
-    // 색상 조합 타입 선택 (0: 완전 랜덤, 1: 보완색, 2: 삼각형)
-    const colorSchemeType = Math.floor(Math.random() * 3);
-    console.log('색상 조합 타입:', colorSchemeType);
-    let colors = [];
-
-    if (colorSchemeType === 0) {
-        // 완전 랜덤 3색상
-        for (let i = 0; i < 3; i++) {
-            colors.push(generateRandomColor());
-        }
-    } else if (colorSchemeType === 1) {
-        // 보완색 관계 2색상 + 추가 랜덤 1색상
-        colors = generateComplementaryColors();
-        colors.push(generateRandomColor());
-    } else {
-        // 삼각형 색상 관계 3색상
-        colors = generateTriadicColors();
-    }
-
-    console.log('최종 색상 배열:', colors);
-
-    // CSS 변수 동적 설정 - 각각 다른 색상 사용
-    const root = document.documentElement;
-    root.style.setProperty('--primary-color', colors[0]);
-    root.style.setProperty('--secondary-color', colors[1]);
-    root.style.setProperty('--accent-color', colors[2]);
-
-    // 텍스트 색상은 어두운 색으로 설정
-    const darkColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 25%)`;
-    root.style.setProperty('--text-color', darkColor);
-
-    // 보더 색상은 accent 색상 사용
-    root.style.setProperty('--border-color', colors[2]);
-
-    // 스킬 관련 색상들 - 각각 다른 색상 사용
-    root.style.setProperty('--skill-bg', colors[0]);
-    root.style.setProperty('--skill-border', colors[1]);
-    root.style.setProperty('--skill-hover', colors[2]);
-    root.style.setProperty('--left-text-color', '#ffffff');
-
-    console.log('CSS 변수 설정 완료');
-    console.log('--primary-color:', getComputedStyle(root).getPropertyValue('--primary-color'));
-    console.log('--secondary-color:', getComputedStyle(root).getPropertyValue('--secondary-color'));
-    console.log('--accent-color:', getComputedStyle(root).getPropertyValue('--accent-color'));
-
-    // 테마 버튼 활성화 상태 변경
-    const themeButtons = document.querySelectorAll('.theme-btn');
-    themeButtons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-theme') === 'random') {
-            btn.classList.add('active');
-        }
-    });
-
-    // 랜덤 테마 설정을 localStorage에 저장
-    localStorage.setItem('selectedTheme', 'random');
-
-    showToast('🎨 랜덤 멀티컬러 테마가 생성되었습니다!', 'info');
-    console.log('🎲 랜덤 테마 함수 완료');
-}
 
 // 테마 이름 반환 함수
 function getThemeName(theme) {
@@ -138,7 +37,7 @@ function getThemeName(theme) {
         'orange': '파스텔 오렌지',
         'red': '파스텔 레드',
         'gray': '파스텔 그레이',
-        'random': '랜덤 멀티컬러',
+
         // 'black': '블랙'
     };
     return themeNames[theme] || theme;
@@ -148,12 +47,7 @@ function getThemeName(theme) {
 function loadSavedTheme() {
     const savedTheme = localStorage.getItem('selectedTheme');
     if (savedTheme) {
-        if (savedTheme === 'random') {
-            // 랜덤 테마는 다시 생성하지 않고 기본 테마로 설정
-            changeTheme('blue');
-        } else {
-            changeTheme(savedTheme);
-        }
+        changeTheme(savedTheme);
     }
 }
 
@@ -1384,23 +1278,32 @@ function restoreSkillsData(skillsData) {
 
             let categorized = false;
 
-            for (const part of skillParts) {
-                if (['html', 'css', 'javascript', 'react', 'vue', 'angular', 'jquery', 'bootstrap', 'sass', 'less', 'typescript', 'flutter', 'next.js', 'nuxt.js', 'gatsby', 'webpack', 'vite', 'tailwind', 'styled-components', 'material-ui', 'antd', 'chakra-ui'].includes(part)) {
-                    frontendSkills.push(skill);
-                    categorized = true;
-                    break;
-                } else if (['node.js', 'nodejs', 'python', 'java', 'php', 'c#', 'c++', 'go', 'ruby', 'django', 'express', 'spring', 'springboot', 'fastapi', 'flask', 'laravel', 'asp.net', 'dotnet', 'kotlin', 'scala', 'rust', 'elixir', 'nestjs', 'koa', 'hapi', 'adonis', 'strapi', 'graphql', 'rest', 'api', 'microservices', 'serverless', 'lambda', 'azure functions', 'google cloud functions'].includes(part)) {
-                    backendSkills.push(skill);
-                    categorized = true;
-                    break;
-                } else if (['mysql', 'postgresql', 'mongodb', 'redis', 'sqlite', 'oracle', 'sql server', 'firebase', 'firestore', 'dynamodb', 'cassandra', 'neo4j', 'elasticsearch', 'influxdb', 'couchdb', 'mariadb', 'cockroachdb', 'timescaledb', 'supabase', 'planetscale'].includes(part)) {
-                    databaseSkills.push(skill);
-                    categorized = true;
-                    break;
-                } else if (['openai', 'gpt', 'gemini', 'tensorflow', 'pytorch', 'scikit-learn', 'sklearn', 'keras', 'pandas', 'numpy', 'matplotlib', 'seaborn', 'plotly', 'jupyter', 'colab', 'huggingface', 'transformers', 'bert', 'gpt-3', 'gpt-4', 'claude', 'langchain', 'llama', 'stable diffusion', 'midjourney', 'dalle', 'chatgpt', 'bard', 'copilot', 'github copilot', 'mlflow', 'kubeflow', 'airflow', 'spark', 'hadoop', 'kafka', 'flink'].includes(part)) {
-                    aiSkills.push(skill);
-                    categorized = true;
-                    break;
+            // AI/ML 관련 키워드가 포함된 경우 우선 분류
+            const aiMlKeywords = ['ai', 'ml', 'machine learning', 'deep learning', 'neural', 'tensorflow', 'pytorch', 'sklearn', 'pandas', 'numpy', 'openai', 'gpt', 'gemini', 'claude', 'huggingface', 'transformers', 'bert', 'llama', 'stable diffusion', 'midjourney', 'dalle', 'chatgpt', 'bard', 'copilot', 'langchain', 'jupyter', 'colab', 'matplotlib', 'seaborn', 'plotly', 'keras', 'scipy', 'statsmodels', 'xgboost', 'lightgbm', 'catboost', 'fastai', 'tensorboard', 'mlflow', 'wandb', 'mlops', 'onnx', 'tensorrt', 'openvino', 'sagemaker', 'vertex ai', 'azure ml', 'databricks', 'kubeflow', 'dvc', 'comet', 'neptune', 'optuna', 'hyperopt', 'ray tune', 'nlp', 'computer vision', 'cv', 'opencv', 'cnn', 'rnn', 'lstm', 'transformer'];
+
+            // 전체 기술명에서 AI/ML 키워드 확인
+            const hasAiMlKeyword = aiMlKeywords.some(keyword => skillLower.includes(keyword));
+            if (hasAiMlKeyword) {
+                aiSkills.push(skill);
+                categorized = true;
+            }
+
+            // 각 부분에 대해 분류 확인 (AI/ML이 아닌 경우에만)
+            if (!categorized) {
+                for (const part of skillParts) {
+                    if (['html', 'css', 'javascript', 'react', 'vue', 'angular', 'jquery', 'bootstrap', 'sass', 'less', 'typescript', 'flutter', 'next.js', 'nuxt.js', 'gatsby', 'webpack', 'vite', 'tailwind', 'styled-components', 'material-ui', 'antd', 'chakra-ui'].includes(part)) {
+                        frontendSkills.push(skill);
+                        categorized = true;
+                        break;
+                    } else if (['node.js', 'nodejs', 'python', 'java', 'php', 'c#', 'c++', 'go', 'ruby', 'django', 'express', 'spring', 'springboot', 'fastapi', 'flask', 'laravel', 'asp.net', 'dotnet', 'kotlin', 'scala', 'rust', 'elixir', 'nestjs', 'koa', 'hapi', 'adonis', 'strapi', 'graphql', 'rest', 'api', 'microservices', 'serverless', 'lambda', 'azure functions', 'google cloud functions'].includes(part)) {
+                        backendSkills.push(skill);
+                        categorized = true;
+                        break;
+                    } else if (['mysql', 'postgresql', 'mongodb', 'redis', 'sqlite', 'oracle', 'sql server', 'firebase', 'firestore', 'dynamodb', 'cassandra', 'neo4j', 'elasticsearch', 'influxdb', 'couchdb', 'mariadb', 'cockroachdb', 'timescaledb', 'supabase', 'planetscale'].includes(part)) {
+                        databaseSkills.push(skill);
+                        categorized = true;
+                        break;
+                    }
                 }
             }
 
@@ -2195,8 +2098,14 @@ function addTraining() {
                 <input type="text" name="trainingPeriod" placeholder="예: 2022.06. ~ 2022.11.">
             </div>
             <div class="form-group">
-                <label>연수기관</label>
-                <input type="text" name="trainingInstitution" placeholder="예: 이젠컴퓨터학원">
+                <label>연수기관 타이틀</label>
+                <input type="text" name="trainingInstitutionTitle" placeholder="예: 이젠컴퓨터학원">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>연수기관명</label>
+                <input type="text" name="trainingInstitution" placeholder="예: 이젠컴퓨터학원 웹개발 과정">
             </div>
         </div>
         <div class="form-group">
@@ -2850,7 +2759,8 @@ function generateResumeHTML(data) {
                             <div class="item-header">
                                 <div class="year">${training.trainingPeriod || ''}</div>
                                 <div class="content">
-                                    <h4>${training.trainingInstitution}</h4>
+                                    <h4>${training.trainingInstitutionTitle || training.trainingInstitution}</h4>
+                                    ${training.trainingInstitution && training.trainingInstitution !== training.trainingInstitutionTitle ? `<div class="training-institution">${training.trainingInstitution}</div>` : ''}
                                     ${training.trainingContent ? `<div class="training-description">${training.trainingContent}</div>` : ''}
                                 </div>
                             </div>

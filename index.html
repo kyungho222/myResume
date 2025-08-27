@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서 작성기</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- 메인 애플리케이션 스크립트 -->
+    <script src="js/main.js"></script>
 </head>
 <body>
     <!-- 플로팅 네비게이션 버튼 -->
@@ -77,10 +80,7 @@
                         <span class="theme-color" style="background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);"></span>
                         <span class="theme-name">파스텔 그레이</span>
                     </button>
-                    <button type="button" class="theme-btn" data-theme="random" onclick="changeRandomTheme()">
-                        <span class="theme-color" style="background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);"></span>
-                        <span class="theme-name">🎲 랜덤 테마</span>
-                    </button>
+
                 </div>
             </div>
         </header>
@@ -431,8 +431,14 @@
                                     <input type="text" name="trainingPeriod" placeholder="예: 2022.06. ~ 2022.11.">
                                 </div>
                                 <div class="form-group">
-                                    <label>연수기관</label>
-                                    <input type="text" name="trainingInstitution" placeholder="예: 이젠컴퓨터학원">
+                                    <label>연수기관 타이틀</label>
+                                    <input type="text" name="trainingInstitutionTitle" placeholder="예: 이젠컴퓨터학원">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>연수기관명</label>
+                                    <input type="text" name="trainingInstitution" placeholder="예: 이젠컴퓨터학원 웹개발 과정">
                                 </div>
                             </div>
                             <div class="form-group">
